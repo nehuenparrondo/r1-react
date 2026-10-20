@@ -1,0 +1,18 @@
+.task-card { --status-color: var(--accent-ink); display: flex; flex-direction: column; min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); transition: border-color .2s, transform .2s; }
+.task-card--in-progress { --status-color: var(--focus); }
+.task-card--completed { --status-color: var(--success); }
+.task-card:hover { border-color: var(--muted); transform: translateY(-2px); }
+.task-card__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.task-card__actions { display: flex; align-items: center; gap: 8px; }
+.task-card__arrow { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; color: var(--muted); text-decoration: none; }
+.task-card__arrow:hover { background: var(--surface-muted); color: var(--text); }
+.task-card__content { min-width: 0; flex: 1; color: var(--text); text-decoration: none; }
+.task-card h3 { margin: 20px 0 10px; font-size: 17px; font-weight: 600; line-height: 1.35; letter-spacing: -.02em; }
+.task-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
+.task-card__due { display: block; margin-top: 20px; color: var(--muted); font-size: 10px; }
+.task-card__due--overdue { color: var(--danger); }
+.task-card__status { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.task-card__status > span { color: var(--muted); font-size: 10px; }
+.task-card__status select { width: 100%; min-width: 0; min-height: 40px; padding: 8px; border: 1px solid var(--border); border-radius: 7px; background: var(--background); color: var(--text); font-size: 11px; cursor: pointer; }
+.task-card--due-highlight { animation: due-task-highlight .9s ease-in-out; }
+@keyframes due-task-highlight { 25%, 75% { border-color: var(--status-color); box-shadow: 0 0 0 3px color-mix(in srgb, var(--status-color) 25%, transparent); } }

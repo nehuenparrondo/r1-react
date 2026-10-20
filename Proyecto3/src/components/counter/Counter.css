@@ -1,0 +1,15 @@
+.counter { padding: 32px; border: 1px solid var(--border); border-radius: 20px; background: var(--surface); text-align: center; box-shadow: var(--shadow); }
+.counter__top { display: flex; justify-content: space-between; margin-bottom: 48px; color: var(--muted); font-size: 11px; }
+.counter__top span:last-child { color: var(--accent-ink); }
+.counter__label { color: var(--muted); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
+.counter__value { display: block; margin: 16px 0 36px; color: var(--text); font-size: clamp(64px, 9vw, 112px); font-weight: 400; line-height: 1; letter-spacing: -.06em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.counter__controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.counter__button { min-height: 64px; display: flex; justify-content: center; align-items: center; gap: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-muted); color: var(--text); transition: background .2s, transform .2s; }
+.counter__button span:first-child { font-size: 25px; }
+.counter__button span:last-child { font-size: 13px; font-weight: 600; }
+.counter__button--add { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.counter__button:hover { transform: translateY(-2px); border-color: var(--accent-ink); }
+.counter__button--add:hover { background: var(--accent-hover); }
+.counter__button:active { transform: translateY(0); }
+.counter__hint { margin: 24px 0 0; color: var(--muted); font-size: 12px; }
+@media (max-width: 480px) { .counter { padding: 24px; } }

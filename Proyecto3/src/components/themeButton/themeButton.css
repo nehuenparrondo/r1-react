@@ -1,0 +1,6 @@
+/* El selector se integra en la cabecera y mantiene un área táctil cómoda. */
+#toggle-tema { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--border); border-radius: 12px; color: var(--text); background: var(--surface); transition: background .2s, border-color .2s; }
+#toggle-tema:hover { background: var(--surface-muted); border-color: var(--accent-ink); }
+#toggle-tema svg { width: 18px; height: 18px; }
+:root.light .icon-sun, :root:not(.light) .icon-moon { display: none; }
+:root.light .icon-moon, :root:not(.light) .icon-sun { display: block; }

@@ -1,0 +1,11 @@
+.formulario-saludo { margin-top: 32px; }
+.formulario-saludo label { display: block; margin-bottom: 10px; font-size: 12px; font-weight: 600; }
+.fila-formulario { display: flex; gap: 10px; }
+.fila-formulario input { flex: 1; min-width: 0; min-height: 50px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--background); color: var(--text); }
+.fila-formulario input::placeholder { color: var(--muted); }
+.fila-formulario input[aria-invalid="true"] { border-color: var(--danger); }
+.fila-formulario button { min-height: 50px; padding: 12px 20px; border: 0; border-radius: 10px; background: var(--accent); color: var(--on-accent); font-size: 13px; font-weight: 650; }
+.fila-formulario button:hover { background: var(--accent-hover); }
+.saludo { margin: 24px 0 0; padding: 18px; border: 1px solid var(--border); border-left: 3px solid var(--accent-ink); border-radius: 10px; background: var(--surface-muted); color: var(--text); font-size: 18px; line-height: 1.5; }
+.error { margin: 12px 0 0; color: var(--danger); font-size: 12px; }
+@media (max-width: 480px) { .fila-formulario { flex-direction: column; } }

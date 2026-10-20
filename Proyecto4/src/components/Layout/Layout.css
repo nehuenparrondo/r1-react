@@ -1,0 +1,8 @@
+/* Contenedor fluido y enlace de salto para recorrer la aplicación con teclado. */
+.layout { width: min(1280px, 100% - 80px); margin-inline: auto; min-height: 100svh; display: flex; flex-direction: column; }
+.layout__main { flex: 1; padding-block: 52px 72px; }
+.layout__footer { display: flex; justify-content: space-between; gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 11px; }
+.skip-link { position: fixed; top: -100px; left: 20px; z-index: 100; padding: 12px 20px; border-radius: 8px; background: var(--accent); color: var(--on-accent); }
+.skip-link:focus { top: 12px; }
+@media (max-width: 700px) { .layout { width: calc(100% - 40px); } .layout__main { padding-top: 32px; } }
+@media (max-width: 480px) { .layout { width: calc(100% - 32px); } .layout__footer { font-size: 10px; } }

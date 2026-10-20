@@ -1,0 +1,70 @@
+/* Paleta y medidas compartidas: el tema oscuro es la presentación inicial. */
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+  --background: #101310;
+  --surface: #191d19;
+  --surface-muted: #222822;
+  --text: #f1f4ed;
+  --muted: #a4ada0;
+  --accent: #c2ed78;
+  --accent-hover: #d2f898;
+  --accent-ink: #c2ed78;
+  --on-accent: #19240e;
+  --border: #323a30;
+  --success: #8dd6b1;
+  --focus: #b7c9ff;
+  --danger: #ffaca5;
+  --danger-bg: #3c2222;
+  --shadow: 0 24px 80px #00000025;
+  --text-muted: var(--muted);
+  --heading: var(--text);
+  --bg: var(--background);
+  --card-bg: var(--surface);
+  --input-bg: var(--background);
+  --message-bg: var(--surface-muted);
+  --focus-ring: #c2ed7830;
+  --error: var(--danger);
+  --texto: var(--text);
+  --fondo: var(--background);
+  --tarjeta: var(--surface);
+  --detalle: var(--accent-ink);
+  --borde: var(--border);
+  --sombra: var(--shadow);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+/* La preferencia clara conserva la jerarquía, los componentes y el contraste. */
+:root.light {
+  color-scheme: light;
+  --background: #f3f5ef;
+  --surface: #ffffff;
+  --surface-muted: #e9eee3;
+  --text: #1d281b;
+  --muted: #606c59;
+  --accent: #bee777;
+  --accent-hover: #afd85f;
+  --accent-ink: #42631c;
+  --border: #d5ddce;
+  --success: #286747;
+  --focus: #405ba3;
+  --danger: #a3352d;
+  --danger-bg: #fce9e6;
+  --shadow: 0 24px 80px #283a1510;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 0; min-height: 100svh; background: var(--background); color: var(--text); }
+button, input, textarea, select { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+a { color: inherit; }
+button:disabled { cursor: not-allowed; opacity: .5; }
+:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 5px; }
+::selection { background: var(--accent); color: var(--on-accent); }
+h1, h2, h3, p { overflow-wrap: anywhere; }
+h1, h2, h3 { color: var(--text); }
+.sr-only, .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

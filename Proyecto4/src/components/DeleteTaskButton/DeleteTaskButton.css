@@ -1,0 +1,11 @@
+/* El diálogo nativo conserva el manejo de foco, Escape y el bloqueo del fondo. */
+.delete-task-trigger { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 12px 16px; border: 1px solid color-mix(in srgb, var(--danger) 35%, var(--border)); border-radius: 9px; color: var(--danger); background: transparent; font-size: 12px; cursor: pointer; }
+.delete-task-trigger:hover { background: var(--danger-bg); }
+.delete-task-trigger--compact { flex: 0 0 auto; width: 44px; height: 44px; padding: 0; font-size: 22px; }
+.delete-dialog { width: min(520px, 100% - 32px); max-height: calc(100svh - 32px); padding: clamp(24px, 5vw, 40px); border: 1px solid var(--border); border-radius: 20px; color: var(--text); background: var(--surface); box-shadow: var(--shadow); text-align: center; }
+.delete-dialog::backdrop { background: #050905bb; backdrop-filter: blur(8px); }
+.delete-dialog__mark { display: grid; place-items: center; width: 52px; height: 52px; margin: 0 auto 24px; border-radius: 16px; color: var(--danger); background: var(--danger-bg); font-size: 24px; }
+.delete-dialog h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.2; font-weight: 500; letter-spacing: -.04em; }
+.delete-dialog p { margin: 0 0 24px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.delete-dialog__actions { display: flex; justify-content: center; gap: 12px; }
+@media (max-width: 480px) { .delete-dialog__actions { flex-direction: column; } }
