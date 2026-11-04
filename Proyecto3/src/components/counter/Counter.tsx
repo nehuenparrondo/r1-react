@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Ejercicio de estado local: los botones actualizan el contador con el
+ * valor anterior y React vuelve a mostrarlo. No hay API ni persistencia del contador entre
+ * recargas.
+ */
+
 import { useState } from 'react'
 import './Counter.css'
 

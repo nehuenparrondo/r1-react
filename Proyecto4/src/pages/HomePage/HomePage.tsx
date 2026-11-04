@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Pantalla HomePage. Coordina presentación y eventos; seguir los
+ * servicios, hooks o contexto importados para encontrar dónde se comprueban y guardan los
+ * datos.
+ */
+
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import PageHeading from '../../components/PageHeading/PageHeading'

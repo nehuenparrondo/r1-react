@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Es el centro del gestor de tareas: comparte el estado entre páginas y
+ * concentra todas las escrituras en localStorage. La pantalla solicita una operación; este
+ * proveedor decide si se permite y guarda la lista completa.
+ */
+
 import { useRef, useState, type ReactNode } from 'react'
 import type { NewTask, QuickTask, Task, TaskStatus, TaskUpdates } from '../../types/Task'
 import { hasUniqueTitles, normalizeTitle } from '../../utils/normalizeTitle'
@@ -14,6 +20,10 @@ function getDefaultDueDate(createdAt: string) {
 }
 
 // Recupera las tareas y adapta datos guardados por versiones anteriores.
+/**
+ * Lee la clave lista-de-tareas del navegador. JSON.parse reconstruye los objetos; si falta
+ * el dato o no se puede interpretar, devuelve una lista vacía. No consulta un servidor.
+ */
 function loadTasks() {
   try {
     const savedTasks = localStorage.getItem(STORAGE_KEY)
@@ -33,6 +43,10 @@ function loadTasks() {
 }
 
 // Los atajos se guardan aparte porque no son tareas activas.
+/**
+ * Recupera los atajos del almacenamiento del navegador. Son plantillas para crear tareas:
+ * no son una segunda lista de tareas activas.
+ */
 function loadQuickTasks() {
   try {
     const savedQuickTasks = localStorage.getItem(QUICK_TASKS_STORAGE_KEY)
@@ -50,6 +64,11 @@ function loadQuickTasks() {
   }
 }
 
+/**
+ * Envuelve las pantallas y es dueño del estado compartido. useState(loadTasks) lee el
+ * almacenamiento al iniciar; las referencias permiten validar también dos envíos
+ * consecutivos antes del próximo render.
+ */
 export function TaskProvider({ children }: { children: ReactNode }) {
   // Pasar funciones a useState evita leer localStorage en cada renderizado.
   const [tasks, setTasks] = useState<Task[]>(loadTasks)
@@ -58,18 +77,32 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const quickTasksRef = useRef(quickTasks)
 
   // Las referencias se actualizan inmediatamente para bloquear también envíos consecutivos.
+  /**
+   * Recibe la lista completa ya modificada. La convierte a texto JSON para localStorage,
+   * actualiza la referencia inmediata y llama a setTasks para volver a dibujar la pantalla.
+   * Guardar no descarga un archivo.
+   */
   function saveTasks(updatedTasks: Task[]) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedTasks))
     tasksRef.current = updatedTasks
     setTasks(updatedTasks)
   }
 
+  /**
+   * Conserva las plantillas en una clave distinta de las tareas y sincroniza su referencia y
+   * estado de React. No cambia las tareas creadas anteriormente.
+   */
   function saveQuickTasks(updatedQuickTasks: QuickTask[]) {
     localStorage.setItem(QUICK_TASKS_STORAGE_KEY, JSON.stringify(updatedQuickTasks))
     quickTasksRef.current = updatedQuickTasks
     setQuickTasks(updatedQuickTasks)
   }
 
+  /**
+   * Recibe título, descripción y fecha de entrega. Rechaza títulos vacíos, largos o
+   * repetidos; agrega ID, fecha de creación y estado pendiente. Devuelve la tarea creada, o
+   * null si no se pudo crear.
+   */
   function addTask(taskData: NewTask) {
     const title = taskData.title.trim()
     // Una tarea completada también reserva su título mientras siga en la lista.
@@ -92,12 +125,20 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     return newTask
   }
 
+  /**
+   * Recibe un ID y el nuevo estado. Recorre la lista sin modificar los otros elementos y usa
+   * el mismo guardado central que el alta.
+   */
   function updateTaskStatus(taskId: string, status: TaskStatus) {
     saveTasks(tasksRef.current.map((task) =>
       task.id === taskId ? { ...task, status } : task,
     ))
   }
 
+  /**
+   * Busca una tarea por ID y valida el nuevo título contra el resto. No permite editar una
+   * completada. Guarda la lista modificada y devuelve si aceptó el cambio.
+   */
   function updateTask(taskId: string, taskData: TaskUpdates) {
     const title = taskData.title.trim()
     const existingTask = tasksRef.current.find((task) => task.id === taskId)
@@ -115,6 +156,10 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     return true
   }
 
+  /**
+   * Transforma una tarea sin fecha en una plantilla reutilizable. Rechaza plantillas con el
+   * mismo título; devuelve si pudo agregarla.
+   */
   function addQuickTask(task: Task) {
     // Los atajos representan tareas reutilizables sin una fecha específica.
     if (task.dueDate) return false
@@ -134,19 +179,36 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     return true
   }
 
+  /**
+   * Quita únicamente la plantilla indicada. Las tareas que ya se crearon a partir de ella
+   * siguen existiendo.
+   */
   function removeQuickTask(quickTaskId: string) {
     saveQuickTasks(quickTasksRef.current.filter((quickTask) => quickTask.id !== quickTaskId))
   }
 
+  /**
+   * Filtra la lista por ID, pero elimina solo si esa tarea está completada. La regla se
+   * aplica aquí aunque otro componente intente saltarse el botón.
+   */
   function deleteTask(taskId: string) {
     // Sólo los elementos completados se pueden borrar, incluso fuera de la interfaz.
     saveTasks(tasksRef.current.filter((task) => task.id !== taskId || task.status !== 'completed'))
   }
 
+  /**
+   * Guarda una nueva lista que conserva solo las tareas no completadas; no borra las
+   * plantillas de atajos.
+   */
   function clearCompletedTasks() {
     saveTasks(tasksRef.current.filter((task) => task.status !== 'completed'))
   }
 
+  /**
+   * Recibe tareas y plantillas importadas, ya interpretadas por el lector de respaldos.
+   * Rechaza títulos repetidos y reemplaza almacenamiento, referencias y estado; no combina
+   * con la lista anterior.
+   */
   function replaceTaskData(importedTasks: Task[], importedQuickTasks: QuickTask[]) {
     // La importación tampoco puede introducir títulos repetidos.
     if (!hasUniqueTitles(importedTasks) || !hasUniqueTitles(importedQuickTasks)) return false

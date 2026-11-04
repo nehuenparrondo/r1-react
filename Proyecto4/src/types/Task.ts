@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Contrato TypeScript de los datos que comparten los módulos. Describe
+ * campos y tipos para comprobar el código, pero no crea tablas ni valida por sí solo un
+ * JSON recibido en ejecución.
+ */
+
 export type TaskStatus = 'pending' | 'in-progress' | 'completed'
 
 /** Modelo compartido por todas las pantallas de la aplicación. */

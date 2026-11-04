@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Respaldo manual del gestor. Descargar genera un archivo JSON
+ * independiente de localStorage; Cargar valida un archivo y pide confirmación antes de
+ * reemplazar datos existentes.
+ */
+
 import { useId, useRef, useState, type ChangeEvent } from 'react'
 import { useTasks } from '../../context/TaskContext/useTasks'
 import { createTaskBackup, parseTaskBackup, type TaskBackup } from '../../utils/taskBackup'
@@ -15,6 +21,10 @@ function TaskDataControls() {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const dialogTitleId = useId()
 
+  /**
+   * Toma el estado actual, construye un Blob JSON y activa un enlace de descarga. El
+   * navegador decide dónde guardar el archivo; después se libera la URL temporal.
+   */
   function downloadBackup() {
     const backup = createTaskBackup(tasks, quickTasks)
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' })
@@ -30,6 +40,10 @@ function TaskDataControls() {
     setFeedback({ type: 'success', message: 'Respaldo descargado correctamente.' })
   }
 
+  /**
+   * Entrega las listas validadas al proveedor de tareas y muestra el resultado. No informa
+   * éxito cuando el proveedor rechaza duplicados.
+   */
   function applyBackup(backup: TaskBackup) {
     if (!replaceTaskData(backup.tasks, backup.quickTasks)) {
       setFeedback({ type: 'error', message: 'No se puede cargar un respaldo con tareas repetidas.' })
@@ -41,6 +55,11 @@ function TaskDataControls() {
     })
   }
 
+  /**
+   * Lee el archivo seleccionado y valida su contenido. Si ya existen datos, espera una
+   * confirmación antes de reemplazarlos. Captura errores para mostrarlos dentro de la
+   * página.
+   */
   async function loadBackup(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
     event.target.value = ''
@@ -70,6 +89,10 @@ function TaskDataControls() {
     setPendingBackup(null)
   }
 
+  /**
+   * Aplica el respaldo pendiente solo después de la confirmación explícita; cerrar el
+   * diálogo sin confirmar no importa datos.
+   */
   function confirmReplacement() {
     if (!pendingBackup) return
     const backup = pendingBackup

@@ -1,3 +1,8 @@
+/**
+ * Guía de lectura. Consulta la tarea cuyo ID aparece en la dirección y muestra sus datos y
+ * acciones. Si no existe, no inventa una tarea: presenta el estado correspondiente.
+ */
+
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import DeleteTaskButton from '../../components/DeleteTaskButton/DeleteTaskButton'
 import PageHeading from '../../components/PageHeading/PageHeading'

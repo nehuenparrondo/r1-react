@@ -1,3 +1,8 @@
+/**
+ * Guía de lectura. Resumen visual de una tarea recibido por props. Sus enlaces y callbacks
+ * usan el ID; los datos persistentes siguen perteneciendo al proveedor.
+ */
+
 import { Link } from 'react-router-dom'
 import type { Task, TaskStatus } from '../../types/Task'
 import { formatDueDate, isDueDateOverdue } from '../../utils/formatDate'

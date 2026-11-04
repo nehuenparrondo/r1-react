@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Mapa de rutas del gestor y proveedor compartido de tareas. Cambiar de
+ * página no debería crear una lista distinta; todas las pantallas consumen el mismo
+ * contexto.
+ */
+
 import { Route, Routes } from 'react-router-dom'
 import { TaskProvider } from './context/TaskContext/TaskProvider'
 import Layout from './components/Layout/Layout'

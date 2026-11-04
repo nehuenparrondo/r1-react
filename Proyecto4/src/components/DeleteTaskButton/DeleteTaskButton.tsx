@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Confirmación reutilizable para una acción destructiva. Abrir el diálogo
+ * no borra: el callback se ejecuta al confirmar y las reglas de negocio permanecen en el
+ * proveedor.
+ */
+
 import { useEffect, useId, useRef, useState } from 'react'
 import './DeleteTaskButton.css'
 

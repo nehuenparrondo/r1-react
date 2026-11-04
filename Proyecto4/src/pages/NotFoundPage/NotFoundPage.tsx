@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Pantalla NotFoundPage. Coordina presentación y eventos; seguir los
+ * servicios, hooks o contexto importados para encontrar dónde se comprueban y guardan los
+ * datos.
+ */
+
 import { Link } from 'react-router-dom'
 import '../../components/Button/Button.css'
 // Reutiliza la presentación del 404 específico de una tarea.

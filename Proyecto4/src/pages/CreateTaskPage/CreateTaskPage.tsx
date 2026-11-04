@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Formulario de alta y atajos. Conserva borradores locales de los campos
+ * y delega la creación real a addTask del contexto; luego navega al detalle de la tarea
+ * creada.
+ */
+
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import DeleteTaskButton from '../../components/DeleteTaskButton/DeleteTaskButton'

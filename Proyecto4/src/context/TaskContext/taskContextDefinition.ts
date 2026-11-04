@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Define el contrato del contexto: qué datos y operaciones pueden
+ * consumir las pantallas. Crear el contexto no carga datos; el valor real lo aporta
+ * TaskProvider.
+ */
+
 import { createContext } from 'react'
 import type { NewTask, QuickTask, Task, TaskStatus, TaskUpdates } from '../../types/Task'
 

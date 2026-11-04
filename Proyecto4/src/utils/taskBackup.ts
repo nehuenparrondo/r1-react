@@ -1,3 +1,9 @@
+/**
+ * Guía de lectura. Contrato del archivo de respaldo: define formato y versión y valida los
+ * datos importados. Un JSON bien formado todavía puede ser inválido para el gestor si le
+ * faltan campos o contiene duplicados.
+ */
+
 import type { QuickTask, Task, TaskStatus } from '../types/Task'
 import { hasUniqueTitles } from './normalizeTitle'
 
@@ -60,6 +66,10 @@ function hasUniqueIds(items: Array<{ id: string }>) {
   return new Set(items.map((item) => item.id)).size === items.length
 }
 
+/**
+ * Arma el objeto de respaldo con formato, versión, fecha y ambas listas. Todavía no crea
+ * una descarga ni escribe en el disco.
+ */
 export function createTaskBackup(tasks: Task[], quickTasks: QuickTask[]): TaskBackup {
   return {
     format: BACKUP_FORMAT,
@@ -70,6 +80,11 @@ export function createTaskBackup(tasks: Task[], quickTasks: QuickTask[]): TaskBa
   }
 }
 
+/**
+ * Recibe el texto de un archivo elegido por la persona. Interpreta JSON y valida formato,
+ * campos, fechas, estados, IDs y títulos antes de permitir reemplazar los datos actuales.
+ * Lanza un error si no sirve.
+ */
 export function parseTaskBackup(contents: string): TaskBackup {
   let parsed: unknown
 

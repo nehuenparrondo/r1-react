@@ -1,3 +1,8 @@
+/**
+ * Guía de lectura. Funciones puras de fechas para las pantallas de tareas. Separan la
+ * representación legible del dato guardado y el cálculo de vencimiento.
+ */
+
 /** Convierte la fecha ISO guardada en una fecha fácil de leer. */
 export function formatDate(date: string) {
   return new Intl.DateTimeFormat('es-AR', {

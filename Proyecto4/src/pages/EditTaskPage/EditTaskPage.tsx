@@ -1,3 +1,8 @@
+/**
+ * Guía de lectura. Editor de una tarea existente. El ID de la ruta permite encontrarla; el
+ * formulario no crea otra tarea ni debe modificar una que ya esté completada.
+ */
+
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import PageHeading from '../../components/PageHeading/PageHeading'
