@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Componente reutilizable PageHeading. Sus props conectan contenido y
- * acciones con el componente que lo usa; para seguir el dato, buscar sus importaciones y
- * los callbacks recibidos en lugar de suponer que guarda directamente en una base.
+ * Cabecera de una pantalla de tareas. Presenta los textos y acciones recibidos por props.
  */
 
 import type { ReactNode } from 'react'

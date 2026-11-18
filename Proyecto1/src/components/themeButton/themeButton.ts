@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Parte del sistema visual: comparte colores, tamaños o preferencia de
- * tema según su implementación. La preferencia de apariencia es independiente de la
- * autenticación y de los datos de las tareas.
+ * Hook del tema de R1. Restaura la clave tema, actualiza las clases del documento y conserva la elección en localStorage.
  */
 
 import { useCallback, useEffect, useState } from 'react'

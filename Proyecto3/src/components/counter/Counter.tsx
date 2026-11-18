@@ -10,6 +10,7 @@ import './Counter.css'
 function Counter() {
   const [count, setCount] = useState(0)
 
+  // Restablecer asigna 0 directamente y sirve también cuando el valor es negativo.
   return (
     <section className="counter" aria-label="Contador">
       <div className="counter__top"><span>Tu punto de partida</span><span aria-hidden="true">↗</span></div>
@@ -19,6 +20,11 @@ function Counter() {
         <button className="counter__button" type="button" aria-label="Restar uno" onClick={() => setCount((currentCount) => currentCount - 1)}><span aria-hidden="true">−</span><span>Restar</span></button>
         <button className="counter__button counter__button--add" type="button" aria-label="Sumar uno" onClick={() => setCount((currentCount) => currentCount + 1)}><span aria-hidden="true">+</span><span>Sumar</span></button>
       </div>
+      <button
+        className="counter__reset"
+        type="button"
+        onClick={() => setCount(0)}
+      >Restablecer a 0</button>
       <p className="counter__hint">Sin límites. Paso a paso.</p>
     </section>
   )

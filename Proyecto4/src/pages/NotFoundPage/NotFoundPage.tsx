@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Pantalla NotFoundPage. Coordina presentación y eventos; seguir los
- * servicios, hooks o contexto importados para encontrar dónde se comprueban y guardan los
- * datos.
+ * Respuesta visual a una dirección inexistente del gestor. Ofrece un enlace para recuperar la navegación hacia el tablero.
  */
 
 import { Link } from 'react-router-dom'

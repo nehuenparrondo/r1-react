@@ -2,9 +2,9 @@
 
 ## Entender el código paso a paso
 
-- [Guía sencilla de funcionamiento](docs/LEER-EL-CODIGO.md): recorrido de los datos, guardado, pantallas y operaciones.
+- [Guía completa de los cinco ejercicios](docs/LEER-EL-CODIGO.md): funciones, datos, validaciones, ejemplos, comandos y preguntas para la defensa.
 - [Mapa de archivos y funciones](docs/MAPA-ARCHIVOS-Y-FUNCIONES.md): enlaces al código y conexiones entre módulos.
-- [Correcciones de estilos y tarjeta](docs/CORRECCIONES-ESTILOS-Y-TARJETA.md): archivos modificados, operaciones y comprobaciones de los ejercicios 1 y 2.
+- [Correcciones de estilos, tarjetas y contador](docs/CORRECCIONES-ESTILOS-Y-TARJETA.md): operaciones y antecedentes de las comprobaciones de los ejercicios 1, 2 y 3.
 
 Los comentarios dentro de los archivos explican las decisiones y efectos importantes en español. La documentación distingue ejecución normal, demo y límites pendientes; no contiene claves privadas.
 
@@ -12,13 +12,13 @@ Cinco aplicaciones independientes con React, TypeScript y Vite. Proyecto4 tambi�
 
 ## Aplicaciones
 
-| Carpeta | Experiencia | Puerto usado para verificar |
+| Carpeta | Experiencia | Puerto sugerido para presentar |
 | --- | --- | --- |
-| Proyecto1 | Saludo que recorre cinco estilos CSS mediante un botón | 5171 |
-| Proyecto2 | Tarjeta por props con edición, guardado local y eliminación confirmada | 5172 |
-| Proyecto3 | Contador con suma y resta | 5173 |
-| Proyecto4 | Tablero, creación, edición, detalle y respaldos de tareas | 5174 |
-| Proyecto5 | Formulario con validación y saludo según la hora | 5175 |
+| Proyecto1 | Saludo que recorre cinco estilos CSS mediante un botón | 5181 |
+| Proyecto2 | Varias tarjetas por props: alta, edición, guardado y eliminación confirmada | 5182 |
+| Proyecto3 | Contador con suma, resta y restablecimiento a cero | 5183 |
+| Proyecto4 | Tablero, creación, edición, detalle y respaldos de tareas | 5184 |
+| Proyecto5 | Formulario con validación y saludo según la hora | 5185 |
 
 ## Ejecutar
 
@@ -69,7 +69,14 @@ La revisión adicional ejecutó 41 comprobaciones específicas y pruebas en el n
 
 Los datos siguen guardándose en el navegador. No hay un backend en esta colección.
 
-En Proyecto2, App es dueño de los datos y los pasa a Tarjeta mediante props. TarjetaForm conserva un borrador: Cancelar edición descarta lo escrito; Guardar valida los campos y persiste en la clave r1-tarjeta-personal. Eliminar tarjeta abre la pregunta y no borra nada hasta confirmar; Cancelar o Escape conservan los datos. La eliminación también se recuerda al recargar y deja la opción de crear una nueva tarjeta. La foto original sigue llegando por props, pero no se edita en este formulario. Los mensajes de error de almacenamiento se muestran dentro de la página.
+En Proyecto2, App conserva una colección y pasa cada perfil a Tarjeta mediante props.
+Agregar nueva tarjeta abre un formulario vacío. Guardar valida y añade el perfil a
+localStorage, clave r1-tarjeta-personal. Editar y eliminar actúan únicamente sobre
+el ID elegido. La eliminación requiere el diálogo de confirmación propio del sitio.
+Cancelar conserva los datos. La versión nueva recupera también la tarjeta individual
+guardada anteriormente. En Proyecto2, npm test comprueba migración y operaciones.
+
+En Proyecto3, Restablecer a 0 reinicia el contador desde cualquier valor.
 
 Las carpetas src05082026 y src_05082026 conservan las copias históricas. La copia de Proyecto4 se excluye de ESLint porque no integra la aplicación activa ni la compilación.
 

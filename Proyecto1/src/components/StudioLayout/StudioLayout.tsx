@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Componente reutilizable StudioLayout. Sus props conectan contenido y
- * acciones con el componente que lo usa; para seguir el dato, buscar sus importaciones y
- * los callbacks recibidos en lugar de suponer que guarda directamente en una base.
+ * Estructura compartida de cada ejercicio de R1. Recibe textos y contenido por props, compone cabecera y pie y coloca el selector de tema.
  */
 
 import type { ReactNode } from 'react'

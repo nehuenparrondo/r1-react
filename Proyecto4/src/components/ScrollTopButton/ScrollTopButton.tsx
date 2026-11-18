@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Componente reutilizable ScrollTopButton. Sus props conectan contenido y
- * acciones con el componente que lo usa; para seguir el dato, buscar sus importaciones y
- * los callbacks recibidos en lugar de suponer que guarda directamente en una base.
+ * Control para regresar al comienzo. Escucha el desplazamiento, decide su visibilidad y realiza el scroll al pulsarlo.
  */
 
 import { useEffect, useState } from 'react'

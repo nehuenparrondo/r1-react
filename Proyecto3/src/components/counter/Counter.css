@@ -12,4 +12,6 @@
 .counter__button--add:hover { background: var(--accent-hover); }
 .counter__button:active { transform: translateY(0); }
 .counter__hint { margin: 24px 0 0; color: var(--muted); font-size: 12px; }
+.counter__reset { width: 100%; min-height: 44px; margin-top: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-muted); color: var(--text); font-size: 13px; font-weight: 600; }
+.counter__reset:hover { border-color: var(--accent-ink); }
 @media (max-width: 480px) { .counter { padding: 24px; } }

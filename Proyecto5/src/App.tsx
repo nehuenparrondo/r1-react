@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Composición del ejercicio: conecta el marco visual con el componente
- * que demuestra el concepto de React. Los datos por props y el estado local pertenecen al
- * ejercicio; aquí no existe un backend.
+ * Composición de este ejercicio de React. Entrega título y descripción a StudioLayout y monta el componente interactivo dentro de su contenido.
  */
 
 import StudioLayout from './components/StudioLayout/StudioLayout'

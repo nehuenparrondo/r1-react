@@ -14,6 +14,7 @@ function HelloWorld() {
   const [indiceEstilo, setIndiceEstilo] = useState(0)
   const estilo = ESTILOS[indiceEstilo]
 
+  /** El resto de la división vuelve al primer estilo después del quinto. */
   function cambiarEstilo() {
     setIndiceEstilo((actual) => (actual + 1) % ESTILOS.length)
   }

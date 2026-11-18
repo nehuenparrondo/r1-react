@@ -212,7 +212,8 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   function replaceTaskData(importedTasks: Task[], importedQuickTasks: QuickTask[]) {
     // La importación tampoco puede introducir títulos repetidos.
     if (!hasUniqueTitles(importedTasks) || !hasUniqueTitles(importedQuickTasks)) return false
-    // La importación se confirma antes de llegar aquí y reemplaza ambos conjuntos juntos.
+    // La interfaz ya confirmó el reemplazo. Estas dos escrituras son independientes:
+    // localStorage no ofrece una transacción si la segunda clave falla al guardarse.
     localStorage.setItem(STORAGE_KEY, JSON.stringify(importedTasks))
     localStorage.setItem(QUICK_TASKS_STORAGE_KEY, JSON.stringify(importedQuickTasks))
     tasksRef.current = importedTasks

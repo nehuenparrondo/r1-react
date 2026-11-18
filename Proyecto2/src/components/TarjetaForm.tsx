@@ -2,13 +2,14 @@ import { useState, type FormEvent } from 'react'
 import type { DatosTarjeta } from '../types/tarjeta'
 
 type TarjetaFormProps = {
+  titulo?: string
   datosIniciales: DatosTarjeta
   onGuardar: (datos: DatosTarjeta) => void
   onCancelar: () => void
 }
 
 /** El borrador es local: cancelar no cambia la tarjeta confirmada por el padre. */
-function TarjetaForm({ datosIniciales, onGuardar, onCancelar }: TarjetaFormProps) {
+function TarjetaForm({ titulo = 'Editá los datos de tu tarjeta', datosIniciales, onGuardar, onCancelar }: TarjetaFormProps) {
   const [borrador, setBorrador] = useState(datosIniciales)
   const [error, setError] = useState('')
 
@@ -30,11 +31,11 @@ function TarjetaForm({ datosIniciales, onGuardar, onCancelar }: TarjetaFormProps
   return (
     <form className="tarjeta-form" aria-labelledby="tarjeta-form-title" onSubmit={enviarFormulario} noValidate>
       <span className="tarjeta__etiqueta">Tu información</span>
-      <h2 id="tarjeta-form-title">Editá los datos de tu tarjeta</h2>
+      <h2 id="tarjeta-form-title">{titulo}</h2>
       <p>Los cambios se aplican cuando tocás Guardar.</p>
       <div className="tarjeta-form__fields">
         <label htmlFor="tarjeta-nombre">Nombre
-          <input id="tarjeta-nombre" name="nombre" autoComplete="given-name" value={borrador.nombre} maxLength={60} required onChange={(event) => setBorrador({ ...borrador, nombre: event.target.value })} />
+          <input id="tarjeta-nombre" name="nombre" autoComplete="given-name" autoFocus value={borrador.nombre} maxLength={60} required onChange={(event) => setBorrador({ ...borrador, nombre: event.target.value })} />
         </label>
         <label htmlFor="tarjeta-apellido">Apellido
           <input id="tarjeta-apellido" name="apellido" autoComplete="family-name" value={borrador.apellido} maxLength={60} required onChange={(event) => setBorrador({ ...borrador, apellido: event.target.value })} />

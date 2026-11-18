@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Pantalla HomePage. Coordina presentación y eventos; seguir los
- * servicios, hooks o contexto importados para encontrar dónde se comprueban y guardan los
- * datos.
+ * Tablero del gestor. Agrupa por estado, deriva cantidades y próximas entregas de la colección y presenta las acciones de respaldo y alta.
  */
 
 import { useEffect, useRef, useState } from 'react'

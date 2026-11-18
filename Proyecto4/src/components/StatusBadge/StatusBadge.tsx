@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Componente reutilizable StatusBadge. Sus props conectan contenido y
- * acciones con el componente que lo usa; para seguir el dato, buscar sus importaciones y
- * los callbacks recibidos en lugar de suponer que guarda directamente en una base.
+ * Etiqueta del estado de una tarea. Convierte el estado recibido por props en su texto y clase visual.
  */
 
 import './StatusBadge.css'

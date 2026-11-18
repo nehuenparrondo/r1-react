@@ -1,7 +1,5 @@
 /**
- * Guía de lectura. Parte del sistema visual: comparte colores, tamaños o preferencia de
- * tema según su implementación. La preferencia de apariencia es independiente de la
- * autenticación y de los datos de las tareas.
+ * Control del tema de R1. Lee el hook de apariencia y conecta la pulsación con la alternancia de la paleta.
  */
 
 import './themeButton.css';

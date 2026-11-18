@@ -1,4 +1,4 @@
-# Correcciones de los ejercicios 1 y 2
+# Correcciones de los ejercicios 1, 2 y 3
 
 ## Saludo con botón
 
@@ -8,9 +8,15 @@ Archivos: [App](../Proyecto1/src/App.tsx), [HelloWorld](../Proyecto1/src/compone
 
 ## Tarjeta por props y operaciones
 
-App conserva el perfil confirmado. Tarjeta recibe nombre, apellido, profesión, imagen y callbacks mediante props. TarjetaForm mantiene el borrador y lo valida antes de pedir el guardado. Cancelar edición descarta el borrador. Nombre y apellido admiten hasta 60 caracteres cada uno; profesión, hasta 100. No se aceptan campos vacíos o compuestos solo por espacios. La foto original continúa siendo una prop y no se edita en este formulario.
+App conserva una lista de perfiles con identificador. Agregar nueva tarjeta abre un
+formulario vacío. Guardar añade el nuevo perfil y conserva los anteriores. Editar
+actualiza solo la tarjeta elegida. Los datos y acciones llegan a Tarjeta mediante props.
+Cancelar descarta el borrador. Nombre y apellido admiten 60 caracteres y profesión 100.
 
-El guardado usa localStorage, clave r1-tarjeta-personal. Se recuerda tanto la edición como la eliminación. Eliminar abre un diálogo del sitio: Cancelar y Escape conservan los datos; confirmar guarda null y muestra la opción Crear nueva tarjeta. Un fallo de almacenamiento se informa dentro de la página, sin fingir que se completó la operación. No hay backend, base SQL, alert, confirm ni prompt.
+El guardado usa localStorage, clave r1-tarjeta-personal. Se guarda la colección completa.
+La lectura conserva el perfil individual de la versión anterior y entiende su null como
+colección vacía. La eliminación usa un diálogo del sitio y afecta solo a la tarjeta
+seleccionada. Los errores de almacenamiento mantienen los datos confirmados.
 
 Archivos modificados o agregados:
 
@@ -22,9 +28,16 @@ Archivos modificados o agregados:
 - [DatosTarjeta](../Proyecto2/src/types/tarjeta.ts): contrato de datos.
 - [CSS de la tarjeta](../Proyecto2/src/components/tarjeta.css): formulario, acciones y diálogo.
 
-También se actualizaron README, la guía de lectura y el mapa de funciones de R1. Los otros tres ejercicios no se modificaron.
+## Restablecer el contador
 
-## Comprobaciones
+Proyecto3/src/components/counter/Counter.tsx incluye Restablecer a 0, que llama
+a setCount(0). El estilo del botón está en Counter.css. Funciona también con negativos.
+
+## Comprobaciones de la primera revisión de estilos y tarjeta
+
+Este apartado conserva las verificaciones de esa revisión anterior. Los comandos
+y resultados de la revisión actual se registran por separado en la
+[guía de los cinco ejercicios](LEER-EL-CODIGO.md).
 
 - Proyecto1 y Proyecto2: npm run build y npm run lint correctos.
 - 24 comprobaciones de lógica con almacenamiento simulado: ciclo de estilos, props, validación, borrador, cancelar, persistir, confirmar eliminación, recrear y manejar fallos de escritura/datos inválidos.
@@ -32,4 +45,10 @@ También se actualizaron README, la guía de lectura y el mapa de funciones de R
 - Las pruebas de edición del navegador se hicieron en un origen separado (puerto 5272) con datos ficticios. La eliminación confirmada se verificó con almacenamiento simulado, sin borrar la tarjeta del usuario.
 - Revisión visual de saludo, formulario y confirmación. La herramienta de navegador informó un ancho real de 605 píxeles durante la comprobación de desbordamiento; no se presenta como una validación real a 320 píxeles.
 
-El código no se subió a GitHub en esta corrección. Los datos guardados se limitan al navegador y origen utilizados.
+## Revisión de varias tarjetas y contador
+
+Proyecto2 incluye siete pruebas automatizadas con npm test para la migración del
+formato anterior, persistencia, creación sin reemplazar perfiles, edición/eliminación
+individuales, cancelación, errores de almacenamiento y contador positivo/negativo.
+Las comprobaciones de eliminación utilizan almacenamiento simulado.
+Los datos guardados pertenecen al navegador y al origen utilizados.

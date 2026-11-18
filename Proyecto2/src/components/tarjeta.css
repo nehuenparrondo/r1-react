@@ -5,7 +5,7 @@
 .tarjeta__body { position: relative; padding: 0 32px 24px; }
 .tarjeta__imagen { display: block; position: relative; width: 108px; height: 108px; margin-top: -48px; margin-bottom: 24px; border: 6px solid var(--surface); border-radius: 50%; object-fit: cover; }
 .tarjeta__etiqueta { display: block; margin-bottom: 12px; color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-.tarjeta__nombre { max-width: 100%; margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; font-weight: 500; letter-spacing: -.045em; }
+.tarjeta__nombre { max-width: 100%; margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1.05; font-weight: 500; letter-spacing: -.045em; overflow-wrap: anywhere; }
 .tarjeta__profesion { margin: 16px 0 32px; color: var(--accent-ink); font-size: 16px; }
 .tarjeta__footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
 .tarjeta__footer span:last-child { color: var(--accent-ink); font-size: 26px; }

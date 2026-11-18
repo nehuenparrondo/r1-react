@@ -4,3 +4,6 @@ export type DatosTarjeta = {
   apellido: string
   profesion: string
 }
+
+/** El identificador permite editar o eliminar una tarjeta sin confundir las demás. */
+export type TarjetaGuardada = DatosTarjeta & { id: string }
